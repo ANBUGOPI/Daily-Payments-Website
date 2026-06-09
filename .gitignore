@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+
+# Firebase logs
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Environment variables
+.env
+.env.*
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Firebase cache
+.firebase/
+
+# Build folders
+dist/
+build/
+
+# Netlify
+.netlify/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
