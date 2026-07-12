@@ -124,67 +124,60 @@ h1 .hl { color: var(--green); }
 .stat-n { font-size: 26px; font-weight: 900; color: var(--text); letter-spacing: -1px; }
 .stat-l { font-size: 12px; color: var(--text3); font-weight: 600; margin-top: 2px; }
 
-/* ── CAROUSEL ── */
-.carousel-wrap {
-  display: flex; justify-content: center; align-items: center;
+/* ── HERO SCREENS GRID (shows every screen at once, no carousel) ── */
+.hero-screens-wrap {
+  display: flex; justify-content: center; align-items: flex-start;
   position: relative;
 }
-.carousel {
-  position: relative;
-  width: 300px; height: 600px;
+.hero-screens-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 22px 18px;
+  width: 100%; max-width: 380px;
 }
-.carousel-slides { position: relative; width: 100%; height: 100%; }
-.c-slide {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  opacity: 0; transition: opacity 0.5s ease;
-  border-radius: 44px;
-  overflow: hidden;
+.hs-item {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  animation: hs-rise .6s ease both;
+}
+.hs-item:nth-child(1) { animation-delay: .05s; }
+.hs-item:nth-child(2) { margin-top: 34px; animation-delay: .15s; }
+.hs-item:nth-child(3) { margin-top: -12px; animation-delay: .25s; }
+.hs-item:nth-child(4) { margin-top: 22px; animation-delay: .35s; }
+.hs-phone {
+  width: 100%; aspect-ratio: 9 / 18;
+  border-radius: 30px; overflow: hidden;
   background: #fff;
-  box-shadow: var(--sh-xl), 0 0 0 10px #f3f4f6, 0 0 0 11px #e5e7eb;
+  box-shadow: var(--sh-lg), 0 0 0 7px #f3f4f6, 0 0 0 8px #e5e7eb;
   border: 2px solid rgba(0,0,0,0.06);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
-.c-slide.active { opacity: 1; }
-.c-slide img {
+.hs-item:hover .hs-phone {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: var(--sh-xl), 0 0 0 7px #f3f4f6, 0 0 0 8px #e5e7eb;
+}
+.hs-phone img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: top center;
   display: block;
 }
-.carousel-dots {
-  display: flex; justify-content: center; gap: 8px;
-  margin-top: 20px;
+.hs-label {
+  font-size: 12px; font-weight: 700; color: var(--text2);
+  letter-spacing: .2px;
 }
-.c-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--border); cursor: pointer;
-  transition: background .25s, transform .2s;
-  border: none; padding: 0;
+.hs-float-chip {
+  position: absolute; top: -14px; right: -6px;
+  background: #fff; border-radius: 100px;
+  padding: 7px 13px 7px 10px;
+  box-shadow: var(--sh-md);
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 800; color: var(--text);
+  animation: hs-rise .6s ease both, float 4.5s ease-in-out .6s infinite;
+  z-index: 5;
 }
-.c-dot.active { background: var(--green); transform: scale(1.3); }
-.carousel-labels {
-  display: flex; justify-content: center;
-  font-size: 13px; font-weight: 700; color: var(--text2);
-  margin-top: 10px; height: 20px;
-}
-.c-label { display: none; }
-.c-label.active { display: block; }
+.hs-float-chip .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
 
-/* nav arrows */
-.c-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 36px; height: 36px; border-radius: 50%;
-  background: #fff; border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; z-index: 10;
-  box-shadow: var(--sh-sm); transition: all .2s;
-  color: var(--text2);
-}
-.c-arrow:hover { border-color: var(--green); color: var(--green); }
-.c-prev { left: -22px; }
-.c-next { right: -22px; }
-
-/* floating animation */
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
-.carousel { animation: float 5s ease-in-out infinite; }
+@keyframes hs-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 
 /* ── SECTIONS BASE ── */
 section { padding: 96px 6%; }
@@ -213,25 +206,35 @@ h2 { font-size: clamp(30px, 4vw, 46px); font-weight: 900; letter-spacing: -.8px;
 
 /* ── SCREENSHOTS STRIP ── */
 .screens-bg { background: #fff; padding-bottom: 64px; }
+.screens-bg .si { text-align: center; }
+.screens-bg .sec-sub { margin: 0 auto; }
 .screens-row {
-  display: flex; gap: 20px;
-  overflow-x: auto; padding: 20px 6% 28px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  margin-top: 44px;
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 28px;
+  max-width: 1000px; margin: 44px auto 0;
+  padding: 20px 6% 28px;
 }
-.screens-row::-webkit-scrollbar { display: none; }
-.sc-item { flex-shrink: 0; scroll-snap-align: start; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.sc-item { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .sc-phone {
   width: 200px; height: 420px;
   background: #fff; border-radius: 36px;
   box-shadow: var(--sh-xl), 0 0 0 8px #f3f4f6, 0 0 0 9px #e5e7eb;
   border: 2px solid rgba(0,0,0,0.06);
   overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
+.sc-item:hover .sc-phone { transform: translateY(-6px); box-shadow: var(--sh-xl), 0 0 0 8px #f3f4f6, 0 0 0 9px #e5e7eb; }
 .sc-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 .sc-label { font-size: 13px; font-weight: 700; color: var(--text2); }
+
+@media (max-width: 980px) {
+  .screens-row {
+    flex-wrap: nowrap; justify-content: flex-start;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .screens-row::-webkit-scrollbar { display: none; }
+  .sc-item { scroll-snap-align: start; }
+}
 
 /* ── HOW IT WORKS ── */
 .how-bg { background: var(--bgsoft); }
@@ -357,7 +360,8 @@ footer { background: var(--bgsoft); border-top: 1px solid var(--border); padding
   .hero-sub { margin: 0 auto 32px; }
   .hero-btns { justify-content: center; }
   .hero-stats { justify-content: center; }
-  .carousel-wrap { display: none; }
+  .hero-screens-wrap { margin-top: 12px; }
+  .hero-screens-grid { max-width: 320px; }
   .feat-grid { grid-template-columns: repeat(2,1fr); }
   .steps { grid-template-columns: 1fr; }
   .fam-grid { grid-template-columns: 1fr; }
@@ -416,34 +420,25 @@ footer { background: var(--bgsoft); border-top: 1px solid var(--border); padding
       </div>
     </div>
 
-    <!-- CAROUSEL -->
-    <div class="carousel-wrap">
-      <div class="carousel" id="heroCarousel">
-        <button class="c-arrow c-prev" onclick="carouselMove(-1)" aria-label="Previous">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button class="c-arrow c-next" onclick="carouselMove(1)" aria-label="Next">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-        <div class="carousel-slides">
-          <div class="c-slide active"><img src="dashboard-sc.png" alt="Dashboard screen" loading="eager"></div>
-          <div class="c-slide"><img src="transaction-sc.png" alt="Transactions screen" loading="lazy"></div>
-          <div class="c-slide"><img src="insight-sc.png" alt="Insights screen" loading="lazy"></div>
-          <div class="c-slide"><img src="profile-sc.png" alt="Profile screen" loading="lazy"></div>
+    <!-- ALL SCREENS, SHOWN AT ONCE -->
+    <div class="hero-screens-wrap">
+      <div class="hero-screens-grid">
+        <div class="hs-float-chip"><span class="dot"></span>5 themes to choose</div>
+        <div class="hs-item">
+          <div class="hs-phone"><img src="dashboard-sc.png" alt="Dashboard screen" loading="eager"></div>
+          <span class="hs-label">Dashboard</span>
         </div>
-      </div>
-      <div style="position:absolute;bottom:-48px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:8px;">
-        <div class="carousel-dots" id="carouselDots">
-          <button class="c-dot active" onclick="carouselGo(0)"></button>
-          <button class="c-dot" onclick="carouselGo(1)"></button>
-          <button class="c-dot" onclick="carouselGo(2)"></button>
-          <button class="c-dot" onclick="carouselGo(3)"></button>
+        <div class="hs-item">
+          <div class="hs-phone"><img src="transaction-sc.png" alt="Transactions screen" loading="lazy"></div>
+          <span class="hs-label">Transactions</span>
         </div>
-        <div class="carousel-labels">
-          <span class="c-label active" id="lbl0">Dashboard</span>
-          <span class="c-label" id="lbl1">Transactions</span>
-          <span class="c-label" id="lbl2">Insights</span>
-          <span class="c-label" id="lbl3">Profile</span>
+        <div class="hs-item">
+          <div class="hs-phone"><img src="insight-sc.png" alt="Insights screen" loading="lazy"></div>
+          <span class="hs-label">Insights</span>
+        </div>
+        <div class="hs-item">
+          <div class="hs-phone"><img src="profile-sc.png" alt="Profile screen" loading="lazy"></div>
+          <span class="hs-label">Profile</span>
         </div>
       </div>
     </div>
@@ -716,45 +711,6 @@ footer { background: var(--bgsoft); border-top: 1px solid var(--border); padding
   </div>
 </footer>
 
-<script>
-(function() {
-  var current = 0;
-  var total = 4;
-  var timer;
-
-  function goTo(n) {
-    var slides = document.querySelectorAll('.c-slide');
-    var dots = document.querySelectorAll('.c-dot');
-    var labels = document.querySelectorAll('.c-label');
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    labels[current].classList.remove('active');
-    current = (n + total) % total;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-    labels[current].classList.add('active');
-  }
-
-  function next() { goTo(current + 1); }
-
-  function startAuto() {
-    clearInterval(timer);
-    timer = setInterval(next, 3200);
-  }
-
-  window.carouselMove = function(dir) {
-    goTo(current + dir);
-    startAuto();
-  };
-
-  window.carouselGo = function(n) {
-    goTo(n);
-    startAuto();
-  };
-
-  startAuto();
-})();
-</script>
 
 </body>
 </html>
