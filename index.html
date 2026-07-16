@@ -20,9 +20,9 @@
   --text: #2A2118;
   --text2: #6B5D4F;
   --text3: #A6957F;
-  --bg: #FAF6EE;
-  --bgsoft: #F2EBDC;
-  --border: #E3D8C4;
+  --bg: #FFFFFF;
+  --bgsoft: #F7F5F1;
+  --border: #E8E3D9;
   --sh-sm: 0 1px 3px rgba(43,33,24,0.10);
   --sh-md: 0 4px 16px rgba(43,33,24,0.10), 0 2px 6px rgba(43,33,24,0.05);
   --sh-lg: 0 12px 40px rgba(43,33,24,0.12), 0 4px 12px rgba(43,33,24,0.06);
@@ -49,7 +49,7 @@ h1, h2, .proof-q, .cta-t {
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  background: rgba(250,246,238,0.9);
+  background: rgba(255,255,255,0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
@@ -64,16 +64,14 @@ nav {
 .nav-links a { font-size: 14px; font-weight: 600; color: var(--text2); text-decoration: none; transition: color .2s; }
 .nav-links a:hover { color: var(--green); }
 .nav-dl {
-  background: var(--text); color: #fff;
-  padding: 11px 22px; border-radius: 100px;
-  font-size: 13.5px; font-weight: 800;
-  text-decoration: none;
-  display: flex; align-items: center; gap: 8px;
-  flex-shrink: 0; white-space: nowrap;
-  box-shadow: 0 3px 14px rgba(42,33,24,0.35);
-  transition: background .2s, transform .15s, box-shadow .2s;
+  display: flex; align-items: center;
+  border-radius: 8px; overflow: hidden;
+  flex-shrink: 0;
+  transition: transform .15s, box-shadow .2s;
+  box-shadow: var(--sh-sm);
 }
-.nav-dl:hover { background: #000; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(42,33,24,0.42); }
+.nav-dl img { display: block; height: 40px; width: auto; }
+.nav-dl:hover { transform: translateY(-1px); box-shadow: var(--sh-md); }
 
 /* ── HERO ── */
 .hero-wrap {
@@ -109,18 +107,12 @@ h1 .hl { color: var(--green); }
 }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .btn-dl {
-  background: #000; color: #fff;
-  padding: 13px 26px 13px 22px; border-radius: 14px;
-  font-size: 15px; font-weight: 800;
-  text-decoration: none;
-  display: flex; align-items: center; gap: 12px;
-  box-shadow: 0 4px 18px rgba(42,33,24,0.38);
-  transition: all .2s;
+  display: inline-flex; align-items: center;
+  border-radius: 10px; overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
 }
-.btn-dl:hover { background: #171717; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(42,33,24,0.42); }
-.btn-dl-t { display: flex; flex-direction: column; line-height: 1.1; }
-.btn-dl-s { font-size: 11px; opacity: .7; letter-spacing: .5px; }
-.btn-dl-b { font-size: 17px; font-weight: 800; }
+.btn-dl img { display: block; height: 54px; width: auto; }
+.btn-dl:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
 .btn-ghost {
   color: var(--text); font-size: 15px; font-weight: 700;
   text-decoration: none;
@@ -385,7 +377,7 @@ footer { background: var(--bgsoft); border-top: 1px solid var(--border); padding
   nav { padding: 0 4%; }
   .nav-links { display: none; }
   .nav-brand-name { display: none; }
-  .nav-dl { padding: 10px 16px; font-size: 13px; }
+  .nav-dl img { height: 34px; }
   section { padding: 64px 4%; }
   .feat-grid { grid-template-columns: 1fr; }
   .screens-row { padding: 16px 4% 24px; }
@@ -407,8 +399,7 @@ footer { background: var(--bgsoft); border-top: 1px solid var(--border); padding
     <a href="#download">Download</a>
   </div>
   <a class="nav-dl" href="https://play.google.com/store/apps/details?id=com.dpi.expensetrackerprod&pcampaignid=web_share" target="_blank" rel="noopener">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.31.17.66.22 1.02.13l12.4-7.15-2.69-2.69-10.73 9.71zm-1.05-20.3C2.05 3.74 2 4.05 2 4.4v15.2c0 .35.05.66.13.94l.07.07 8.52-8.52v-.2l-8.52-8.52-.07.09zM20.49 10.7l-2.43-1.4-3.01 3.01 3.01 3.01 2.45-1.41c.7-.4.7-1.05 0-1.46l-.02.25zm-17.26 11.9l10.7-9.7-2.69-2.69-10.73 9.7 2.72 2.69z"/></svg>
-    Get on Play Store
+    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="40">
   </a>
 </nav>
 
@@ -421,8 +412,7 @@ footer { background: var(--bgsoft); border-top: 1px solid var(--border); padding
       <p class="hero-sub">Track income and expenses, split costs with family, and see where every rupee goes — all in one beautiful app.</p>
       <div class="hero-btns">
         <a class="btn-dl" href="https://play.google.com/store/apps/details?id=com.dpi.expensetrackerprod&pcampaignid=web_share" target="_blank" rel="noopener">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.31.17.66.22 1.02.13l12.4-7.15-2.69-2.69-10.73 9.71zm-1.05-20.3C2.05 3.74 2 4.05 2 4.4v15.2c0 .35.05.66.13.94l.07.07 8.52-8.52v-.2l-8.52-8.52-.07.09zM20.49 10.7l-2.43-1.4-3.01 3.01 3.01 3.01 2.45-1.41c.7-.4.7-1.05 0-1.46l-.02.25zm-17.26 11.9l10.7-9.7-2.69-2.69-10.73 9.7 2.72 2.69z"/></svg>
-          <span class="btn-dl-t"><span class="btn-dl-s">GET IT ON</span><span class="btn-dl-b">Google Play</span></span>
+          <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="54">
         </a>
         <a class="btn-ghost" href="#features">
           See features
