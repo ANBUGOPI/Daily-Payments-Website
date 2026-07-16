@@ -309,13 +309,25 @@ h2 { font-size: clamp(30px, 4vw, 46px); font-weight: 900; letter-spacing: -.8px;
 
 /* ── PROOF ── */
 .proof-bg { background: var(--navy); color: #fff; text-align: center; }
-.proof-in { max-width: 720px; margin: 0 auto; }
+.proof-in { max-width: 900px; margin: 0 auto; }
+.proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; text-align: left; }
+.proof-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 28px;
+}
+.proof-card .proof-stars { font-size: 16px; margin-bottom: 12px; }
+.proof-card .proof-q { font-size: 17px; font-weight: 700; line-height: 1.6; letter-spacing: -.2px; margin-bottom: 20px; }
 .proof-stars { font-size: 22px; color: #fbbf24; letter-spacing: 4px; margin-bottom: 14px; }
 .proof-q { font-size: clamp(22px, 3.5vw, 38px); font-weight: 800; line-height: 1.3; letter-spacing: -.4px; margin-bottom: 28px; }
 .proof-q .em { color: #F0AE7D; }
 .proof-nums { display: flex; justify-content: center; gap: 56px; flex-wrap: wrap; margin-top: 48px; }
 .proof-num { font-size: 34px; font-weight: 900; color: #fff; letter-spacing: -1px; }
 .proof-lbl { font-size: 12px; color: rgba(255,255,255,.45); margin-top: 4px; font-weight: 600; }
+
+@media (max-width: 700px) {
+  .proof-grid { grid-template-columns: 1fr; }
+}
 
 /* ── CTA ── */
 .cta-wrap { text-align: center; }
@@ -359,6 +371,9 @@ footer { background: var(--bgsoft); border-top: 1px solid var(--border); padding
   text-decoration: none; transition: all .2s;
 }
 .soc-btn:hover { border-color: var(--green); background: var(--green-lt); }
+
+/* ── FOOTER BOTTOM CTA ── */
+.ft-dl-wrap { display: flex; justify-content: center; margin: 8px 0 40px; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
@@ -648,6 +663,21 @@ footer { background: var(--bgsoft); border-top: 1px solid var(--border); padding
           <div style="color:rgba(255,255,255,.4);font-size:13px;font-weight:600;">Bangalore · DiPi Fam user</div>
         </div>
       </div>
+
+      <div class="proof-grid" style="grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto;">
+        <div class="proof-card">
+          <div class="proof-stars">★★★★★</div>
+          <div class="proof-q">"A reliable and easy-to-use app that helps manage finances effectively with a smooth and user-friendly interface."</div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:32px;height:32px;border-radius:9px;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px;flex-shrink:0;">V</div>
+            <div>
+              <div style="color:rgba(255,255,255,.85);font-size:13px;font-weight:700;">Varun C</div>
+              <div style="color:rgba(255,255,255,.4);font-size:12px;font-weight:600;">Google Play review</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="proof-nums">
         <div><div class="proof-num">Free</div><div class="proof-lbl">To download</div></div>
         <div><div class="proof-num" style="color:#F0AE7D;">INR</div><div class="proof-lbl">India-first currency</div></div>
@@ -703,22 +733,25 @@ footer { background: var(--bgsoft); border-top: 1px solid var(--border); padding
       </div>
       <div class="ft-col">
         <div class="ft-col-title">Follow</div>
-        <a href="#">Instagram</a>
-        <a href="#">Twitter / X</a>
+        <a href="https://instagram.com/dipi.2411" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://youtube.com/@dipi-daily-vlogs?si=kiBit4LD8iw614v0" target="_blank" rel="noopener">YouTube</a>
         <a href="#">Facebook</a>
-        <a href="#">YouTube</a>
       </div>
     </div>
+
+    <div class="ft-dl-wrap">
+      <a class="nav-dl" href="https://play.google.com/store/apps/details?id=com.dpi.expensetrackerprod&pcampaignid=web_share" target="_blank" rel="noopener">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="40">
+      </a>
+    </div>
+
     <div class="ft-bottom">
       <div class="ft-copy">© 2026 DP: Income &amp; Expense Tracker. All rights reserved.</div>
       <div class="ft-social">
-        <a class="soc-btn" href="#" title="Instagram">
+        <a class="soc-btn" href="https://instagram.com/dipi.2411" target="_blank" rel="noopener" title="Instagram">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
         </a>
-        <a class="soc-btn" href="#" title="Twitter">
-          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <a class="soc-btn" href="#" title="YouTube">
+        <a class="soc-btn" href="https://youtube.com/@dipi-daily-vlogs?si=kiBit4LD8iw614v0" target="_blank" rel="noopener" title="YouTube">
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
         </a>
       </div>
